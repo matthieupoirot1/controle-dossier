@@ -35,7 +35,8 @@ export class CreateFolderComponent implements OnInit {
           this.folderForm.controls.name.setValue(folder.name);
           this.folderForm.controls.photos.setValue(folder.photos);
           this.folderForm.controls.vt.setValue(folder.vt);
-          this.folderForm.controls.imposition.setValue(folder.devis);
+          this.folderForm.controls.imposition.setValue(folder.imposition);
+          this.folderForm.controls.devis.setValue(folder.devis);
           this.folderForm.controls.CGI.setValue(folder.CGI);
           this.folderForm.controls.attestation.setValue(folder.attestation);
           this.folderForm.controls.dateBatigest.setValue(folder.dateBatigest);
