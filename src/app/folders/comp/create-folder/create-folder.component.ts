@@ -50,11 +50,8 @@ export class CreateFolderComponent implements OnInit {
 
   onSubmit(): void{
     console.log(this.folderForm.value);
-    const formatedName = this.route.snapshot.paramMap.get('formatedName');
-    if (!formatedName){
-      this.foldersService.create(Folder.createFromJSON(this.folderForm.value)).subscribe(() => {
-        this.router.navigateByUrl('/list');
-      });
-    }
+    this.foldersService.create(Folder.createFromJSON(this.folderForm.value)).subscribe(() => {
+      this.router.navigateByUrl('/list');
+    });
   }
 }
