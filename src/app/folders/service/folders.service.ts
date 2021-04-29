@@ -25,11 +25,11 @@ export class FoldersService {
     );
   }
 
-  getById(id: number): Observable<Folder>{
+  getById(formatedName: string): Observable<Folder>{
     return this.api.getData('folders.json').pipe(
       map(
-        (data: any[]) => {
-          return data[id];
+        (data) => {
+          return data[formatedName];
         }
       )
     );

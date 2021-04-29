@@ -6,6 +6,7 @@ import {ListFoldersComponent} from './folders/comp/list-folders/list-folders.com
 const routes: Routes = [
   {path: 'create', component: CreateFolderComponent},
   {path: 'list', component: ListFoldersComponent},
+  {path: 'edit/:formatedName', component: CreateFolderComponent},
 ];
 
 @NgModule({
