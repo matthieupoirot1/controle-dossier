@@ -1,0 +1,50 @@
+<form [formGroup]="folderForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Nom du client : </label>
+    <input type="text" id="name" formControlName="name">
+  </div>
+  <div *ngIf="folderForm.controls.name.invalid && (folderForm.controls.name.dirty || folderForm.controls.name.touched)" class="card highlight-card card-small">
+      Il faut un nom pour le dossier !
+  </div>
+  <div>
+    <label for="photos">Photos </label>
+    <input type="checkbox" id="photos" formControlName="photos">
+  </div>
+  <div>
+    <label for="vt">Visite technique </label>
+    <input type="checkbox" id="vt" formControlName="vt">
+  </div>
+  <div>
+    <label for="imposition">Avis d'imposition </label>
+    <input type="checkbox" id="imposition" formControlName="imposition">
+  </div>
+  <div>
+    <label for="devis">Devis </label>
+    <input type="checkbox" id="devis" formControlName="devis">
+  </div>
+  <div>
+    <label for="CGI">CGI </label>
+    <input type="checkbox" id="CGI" formControlName="CGI">
+  </div>
+  <div>
+    <label for="attestation">Attestation sur l'honneur </label>
+    <input type="checkbox" id="attestation" formControlName="attestation">
+  </div>
+  <div>
+    <label for="dateBatigest"> Date signature Batigest </label>
+    <input type="checkbox" id="dateBatigest" formControlName="dateBatigest">
+  </div>
+  <div>
+    <label for="cadastre">Mesures cadastre et infos </label>
+    <input type="checkbox" id="cadastre" formControlName="cadastre">
+  </div>
+  <div>
+    <label for="controle">Mise en contrôle </label>
+    <input type="checkbox" id="controle" formControlName="controle">
+  </div>
+  <div>
+    <label for="meters">M² : </label>
+    <input type="number" id="meters" formControlName="meters">
+  </div>
+  <button type="submit" [disabled]="folderForm.invalid">Créer nouveau</button>
+</form>
