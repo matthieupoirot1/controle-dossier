@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./create-folder.component.styl']
 })
 export class CreateFolderComponent implements OnInit {
-
+  public folderModel ?: Folder;
   public folderForm = new FormGroup({
     name : new FormControl('', Validators.required),
     photos: new FormControl(false),
@@ -32,6 +32,9 @@ export class CreateFolderComponent implements OnInit {
     if (formatedName){
       this.foldersService.getById(formatedName).subscribe(
         (folder) => {
+
+          this.folderModel = folder;
+
           this.folderForm.controls.name.setValue(folder.name);
           this.folderForm.controls.photos.setValue(folder.photos);
           this.folderForm.controls.vt.setValue(folder.vt);
@@ -51,7 +54,11 @@ export class CreateFolderComponent implements OnInit {
 
   onSubmit(): void{
     console.log(this.folderForm.value);
-    this.foldersService.create(Folder.createFromJSON(this.folderForm.value)).subscribe(() => {
+    const newOrOldFolder = Folder.createFromJSON(this.folderForm.value);
+    newOrOldFolder.valid = newOrOldFolder.checkValidness();
+    console.log('hey! :');
+    console.log(newOrOldFolder);
+    this.foldersService.create(newOrOldFolder).subscribe(() => {
       this.router.navigateByUrl('/list');
     });
   }

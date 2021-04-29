@@ -52,7 +52,7 @@ export class Folder {
       JSONobject.controle,
       JSONobject.cadastre,
       JSONobject.meters,
-      JSONobject.valid
+      JSONobject?.valid
     );
   }
 
@@ -71,6 +71,18 @@ export class Folder {
       meters: this.meters,
       valid: this.valid
     });
+  }
+
+  checkValidness(): boolean{
+    return this.photos &&
+      this.vt &&
+      this.imposition &&
+      this.devis &&
+      this.CGI &&
+      this.attestation &&
+      this.dateBatigest &&
+      this.controle &&
+      this.cadastre;
   }
 
   getFormatedName(): string {
