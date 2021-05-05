@@ -1,7 +1,7 @@
 <h3>Liste des dossiers</h3>
 
 <mat-grid-list cols="4" rowHeight="2:1" gutterSize="3px">
-  <mat-grid-tile *ngFor="let folder of folders">
+  <mat-grid-tile *ngFor="let folder of folders" class="card">
     <mat-card>
       <h2 class="textCenter">{{folder.name}}</h2>
       <a *ngIf="!folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="invalid" mat-button>Compléter</a>
