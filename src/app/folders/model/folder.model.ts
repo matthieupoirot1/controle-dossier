@@ -2,6 +2,7 @@ export class Folder {
   public name = '';
   public photos = false;
   public vt = false;
+  date: number;
   public imposition = false;
   public devis = false;
   public CGI = false;
@@ -11,6 +12,8 @@ export class Folder {
   public cadastre = false;
   public meters = 0;
   public valid = false;
+  public mois = 1;
+  public commentaire = '';
 
   constructor(
     name: string,
@@ -24,7 +27,9 @@ export class Folder {
     controle: boolean,
     cadastre: boolean,
     meters: number,
-    valid: false) {
+    valid: false,
+    date: number,
+    commentaire: string) {
     this.name = name;
     this.photos = photos;
     this.vt = vt;
@@ -37,6 +42,8 @@ export class Folder {
     this.cadastre = cadastre;
     this.meters = meters;
     this.valid = valid;
+    this.commentaire = commentaire;
+    this.date = date;
   }
 
   static createFromJSON(JSONobject: any): Folder{
@@ -52,7 +59,9 @@ export class Folder {
       JSONobject.controle,
       JSONobject.cadastre,
       JSONobject.meters,
-      JSONobject?.valid
+      JSONobject?.valid,
+      JSONobject?.date,
+      JSONobject?.commentaire,
     );
   }
 
@@ -69,7 +78,9 @@ export class Folder {
       controle: this.controle,
       cadastre: this.cadastre,
       meters: this.meters,
-      valid: this.valid
+      valid: this.valid,
+      date: this.date,
+      commentaire: this.commentaire
     });
   }
 
@@ -82,7 +93,8 @@ export class Folder {
       this.attestation &&
       this.dateBatigest &&
       this.controle &&
-      this.cadastre;
+      this.cadastre &&
+      this.date > 1 && this.date < 12;
   }
 
   getFormatedName(): string {

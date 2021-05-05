@@ -23,6 +23,8 @@ export class CreateFolderComponent implements OnInit {
     cadastre: new FormControl(false),
     controle: new FormControl(false),
     meters: new FormControl(0),
+    date: new FormControl(1),
+    commentaire: new FormControl(''),
   });
 
   constructor(private foldersService: FoldersService, private router: Router, private route: ActivatedRoute) { }
@@ -46,6 +48,8 @@ export class CreateFolderComponent implements OnInit {
           this.folderForm.controls.cadastre.setValue(folder.cadastre);
           this.folderForm.controls.controle.setValue(folder.controle);
           this.folderForm.controls.meters.setValue(folder.meters);
+          this.folderForm.controls.date.setValue(folder.date);
+          this.folderForm.controls.commentaire.setValue(folder.commentaire);
         }
       );
       // todo si id alors set tous les formControl au dossier attention il faut le recuperer avec le folderService
