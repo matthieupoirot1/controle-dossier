@@ -12,6 +12,10 @@ export class ListFoldersComponent implements OnInit {
   constructor(private foldersService: FoldersService) { }
 
   ngOnInit(): void {
+    this.loadFolders();
+  }
+
+  loadFolders(): void{
     this.foldersService.getAll().subscribe((folders) => {
       this.folders = folders;
     });
@@ -19,6 +23,8 @@ export class ListFoldersComponent implements OnInit {
 
   onDelete(folder: Folder): void {
     console.log('Suppresion dossier ' + folder.name);
-    this.foldersService.delete(folder).subscribe();
+    this.foldersService.delete(folder).subscribe(() =>{
+      this.loadFolders();
+    });
   }
 }
