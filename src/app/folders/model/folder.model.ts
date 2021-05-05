@@ -94,7 +94,7 @@ export class Folder {
       this.dateBatigest &&
       this.controle &&
       this.cadastre &&
-      this.date > 1 && this.date < 12;
+      this.date >= 1 && this.date <= 12;
   }
 
   getFormatedName(): string {

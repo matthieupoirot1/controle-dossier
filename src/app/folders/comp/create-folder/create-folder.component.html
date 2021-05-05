@@ -50,6 +50,9 @@
     <label for="date">Mois : </label>
     <input type="number" id="date" formControlName="date">
   </div>
+  <div *ngIf="folderForm.controls.date.invalid && (folderForm.controls.date.dirty || folderForm.controls.date.touched)" class="card highlight-card card-small">
+    Le mois doit être compris entre 1 et 12
+  </div>
   <div>
     <label for="comment">Commentaire : </label>
     <textarea id="comment" formControlName="commentaire" cols="25"></textarea>

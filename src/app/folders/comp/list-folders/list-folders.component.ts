@@ -18,6 +18,7 @@ export class ListFoldersComponent implements OnInit {
   }
 
   onDelete(folder: Folder): void {
-    this.foldersService.delete(folder);
+    console.log('Suppresion dossier ' + folder.name);
+    this.foldersService.delete(folder).subscribe();
   }
 }

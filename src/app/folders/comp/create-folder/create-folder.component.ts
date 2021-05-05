@@ -22,8 +22,8 @@ export class CreateFolderComponent implements OnInit {
     dateBatigest: new FormControl(false),
     cadastre: new FormControl(false),
     controle: new FormControl(false),
-    meters: new FormControl(0),
-    date: new FormControl(1),
+    meters: new FormControl(),
+    date: new FormControl(1, [Validators.max(12), Validators.min(1), Validators.required]),
     commentaire: new FormControl(''),
   });
 
