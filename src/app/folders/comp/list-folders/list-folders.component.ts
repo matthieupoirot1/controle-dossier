@@ -17,4 +17,7 @@ export class ListFoldersComponent implements OnInit {
     });
   }
 
+  onDelete(folder: Folder): void {
+    this.foldersService.delete(folder);
+  }
 }

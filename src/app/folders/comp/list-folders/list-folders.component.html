@@ -6,21 +6,7 @@
       <h2 class="textCenter">{{folder.name}}</h2>
       <a *ngIf="!folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="invalid" mat-button>Compléter</a>
       <a *ngIf="folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="valid" mat-button>Consulter</a>
+      <a (click)="onDelete(folder)" class="valid" mat-button>Supprimer</a>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
-<div>
-  <mat-card *ngFor="let folder of folders">
-    <a href="{{'/edit/' + folder.getFormatedName()}}" [ngClass]="{invalid: !folder.valid}">{{folder.name}}</a>
-  </mat-card>
-</div>
-<table>
-  <thead>
-    <th>Nom</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let folder of folders">
-      <td><a href="{{'/edit/' + folder.getFormatedName()}}" [ngClass]="{invalid: !folder.valid}">{{folder.name}}</a></td>
-    </tr>
-  </tbody>
-</table>

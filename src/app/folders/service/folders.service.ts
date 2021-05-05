@@ -38,4 +38,8 @@ export class FoldersService {
   create(folder: Folder): Observable<any>{
     return this.api.putData('folders/' + folder.getFormatedName() + '.json', folder.toJSON());
   }
+
+  delete(folder: Folder): Observable<any>{
+    return this.api.deleteData('folders/' + folder.getFormatedName() + '.json');
+  }
 }
