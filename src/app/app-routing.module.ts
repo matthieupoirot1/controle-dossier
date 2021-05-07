@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: 'create', component: CreateFolderComponent},
   {path: 'list', component: ListFoldersComponent},
   {path: 'edit/:formatedName', component: CreateFolderComponent},
+  {path: '**', component: ListFoldersComponent},
 ];
 
 @NgModule({
