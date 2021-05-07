@@ -1,10 +1,10 @@
-<mat-toolbar color="primary" class="flexParent mat-typography">
+<mat-toolbar color="primary" class="flexParent mat-typography mat-elevation-z5">
   <div class="imageContainer">
     <img class="image" src="/assets/logo_IBC.png">
   </div>
-  <div class="flexParentCenter flexExpand" >
-    <a [routerLink]="'/list'" mat-button class="linkText">Liste des dossiers</a>
-    <a [routerLink]="'/create'" mat-button class="linkText">Créer un dossiers</a>
+  <div class="flexParentCenter flexExpand" fxLayoutGap="2vw">
+    <a [routerLink]="'/list'" mat-raised-button color="accent" class="linkText">Liste des dossiers</a>
+    <a [routerLink]="'/create'" mat-raised-button color="accent" class="linkText">Créer un dossiers</a>
   </div>
 </mat-toolbar>
 <router-outlet></router-outlet>

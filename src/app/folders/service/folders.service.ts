@@ -16,6 +16,7 @@ export class FoldersService {
       map(
       (data) => {
         console.log(data);
+        if (!data) { data = {}; }
         // Data is an object composed of folder object, so getting only the values
         return Object.values(data).map((JSONfolder) => {
           return Folder.createFromJSON(JSONfolder);
@@ -41,5 +42,42 @@ export class FoldersService {
 
   delete(folder: Folder): Observable<any>{
     return this.api.deleteData('folders/' + folder.getFormatedName() + '.json');
+  }
+
+  getAllPerMonth(monthNumber: number): Observable<Folder[]> {
+    return this.getAll().lift(
+      map((value: Folder[]) => {
+        return value.filter((folder) => {
+          return folder.mois === monthNumber;
+        });
+      }
+    ));
+  }
+
+  getNbMetersPerMonth(monthNumber: number, valid = true): Observable<number>{
+    return this.getAllPerMonth(monthNumber).pipe(
+      map((folders: Folder[]) => {
+        folders = folders.filter(folder => folder.valid === valid && folder.mois === monthNumber);
+        let nbMeters = 0;
+        for (const folder of folders) {
+          nbMeters += folder.meters;
+        }
+        return nbMeters;
+      })
+    );
+  }
+
+  getTotalNbMeters(valid= true): Observable<number>{
+    return this.getAll().pipe(
+      map((folders: Folder[]) => {
+        folders = folders.filter(folder => folder.valid === valid);
+        let nbMeters = 0;
+        for (const folder of folders) {
+          console.log(folder.meters);
+          nbMeters += folder.meters;
+        }
+        return nbMeters;
+      })
+    );
   }
 }

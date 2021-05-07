@@ -1,61 +1,82 @@
 <form [formGroup]="folderForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="name">Nom du client : </label>
-    <input type="text" id="name" formControlName="name">
+  <div fxLayout="column" fxLayoutAlign="center">
+    <!--  <div>-->
+    <!--    <label for="name">Nom du client : </label>-->
+    <!--    <input type="text" id="name" formControlName="name">-->
+    <!--  </div>-->
+    <!--  <div *ngIf="folderForm.controls.name.invalid && (folderForm.controls.name.dirty || folderForm.controls.name.touched)" class="card highlight-card card-small">-->
+    <!--      Il faut un nom pour le dossier !-->
+    <!--  </div>-->
+    <div>
+      <mat-form-field fxLayoutAlign="center" class="example-full-width" appearance="outline">
+        <mat-label>Nom du dossier</mat-label>
+        <input type="email" matInput formControlName="name"
+               placeholder="Ex. ANTHONY GUZMAN">
+        <mat-error
+          *ngIf="folderForm.controls.name.invalid && (folderForm.controls.name.dirty || folderForm.controls.name.touched)">
+          Il faut un nom pour le dossier
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field fxLayoutAlign="center" class="example-full-width" appearance="outline">
+        <mat-label>Mètres carrés</mat-label>
+        <input type="number" matInput formControlName="meters">
+        <span matSuffix>m²</span>
+        <mat-error
+          *ngIf="folderForm.controls.meters.invalid && (folderForm.controls.meters.dirty || folderForm.controls.meters.touched)">
+          Il faut entrer les mètres carrés
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field fxLayoutAlign="center" class="example-full-width" appearance="outline">
+        <mat-label>Mois du dossier</mat-label>
+        <input type="number" matInput formControlName="date" placeholder="1">
+        <mat-error
+          *ngIf="folderForm.controls.date.invalid && (folderForm.controls.date.dirty || folderForm.controls.date.touched)">
+          Le mois doit être compris entre 1 et 12
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div class="checkboxDiv">
+        <mat-checkbox id="photos" formControlName="photos">Photos</mat-checkbox>
+      </div>
+      <div class="checkboxDiv">
+        <mat-checkbox id="vt" formControlName="vt">Visite Technique</mat-checkbox>
+      </div>
+      <div class="checkboxDiv">
+        <mat-checkbox id="imposition" formControlName="imposition">Imposition</mat-checkbox>
+      </div>
+      <div class="checkboxDiv">
+        <mat-checkbox id="devis" formControlName="devis">Devis</mat-checkbox>
+      </div>
+      <div class="checkboxDiv">
+        <mat-checkbox id="CGI" formControlName="CGI">CGI</mat-checkbox>
+      </div>
+      <div class="checkboxDiv">
+        <mat-checkbox id="attestation" formControlName="attestation">Attestation sur l'honneur</mat-checkbox>
+      </div>
+      <div class="checkboxDiv">
+        <mat-checkbox id="dateBatigest" formControlName="dateBatigest">Date signature Batigest</mat-checkbox>
+      </div>
+      <div class="checkboxDiv">
+        <mat-checkbox id="cadastre" formControlName="cadastre">Mesures cadastre et infos</mat-checkbox>
+      </div>
+      <div class="checkboxDiv">
+        <mat-checkbox id="controle" formControlName="controle">Mise en contrôle</mat-checkbox>
+      </div>
+    </div>
+    <div>
+      <mat-form-field fxLayoutAlign="center" class="example-full-width" appearance="outline">
+        <mat-label>Commentaire</mat-label>
+        <textarea matInput formControlName="commentaire"></textarea>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center">
+      <button class="checkboxDiv" mat-raised-button color="primary"
+              [disabled]="folderForm.invalid">{{folderModel ? "Modifier" : "Créer"}}</button>
+    </div>
   </div>
-  <div *ngIf="folderForm.controls.name.invalid && (folderForm.controls.name.dirty || folderForm.controls.name.touched)" class="card highlight-card card-small">
-      Il faut un nom pour le dossier !
-  </div>
-  <div>
-    <label for="photos">Photos </label>
-    <input type="checkbox" id="photos" formControlName="photos">
-  </div>
-  <div>
-    <label for="vt">Visite technique </label>
-    <input type="checkbox" id="vt" formControlName="vt">
-  </div>
-  <div>
-    <label for="imposition">Avis d'imposition </label>
-    <input type="checkbox" id="imposition" formControlName="imposition">
-  </div>
-  <div>
-    <label for="devis">Devis </label>
-    <input type="checkbox" id="devis" formControlName="devis">
-  </div>
-  <div>
-    <label for="CGI">CGI </label>
-    <input type="checkbox" id="CGI" formControlName="CGI">
-  </div>
-  <div>
-    <label for="attestation">Attestation sur l'honneur </label>
-    <input type="checkbox" id="attestation" formControlName="attestation">
-  </div>
-  <div>
-    <label for="dateBatigest"> Date signature Batigest </label>
-    <input type="checkbox" id="dateBatigest" formControlName="dateBatigest">
-  </div>
-  <div>
-    <label for="cadastre">Mesures cadastre et infos </label>
-    <input type="checkbox" id="cadastre" formControlName="cadastre">
-  </div>
-  <div>
-    <label for="controle">Mise en contrôle </label>
-    <input type="checkbox" id="controle" formControlName="controle">
-  </div>
-  <div>
-    <label for="meters">M² : </label>
-    <input type="number" id="meters" formControlName="meters">
-  </div>
-  <div>
-    <label for="date">Mois : </label>
-    <input type="number" id="date" formControlName="date">
-  </div>
-  <div *ngIf="folderForm.controls.date.invalid && (folderForm.controls.date.dirty || folderForm.controls.date.touched)" class="card highlight-card card-small">
-    Le mois doit être compris entre 1 et 12
-  </div>
-  <div>
-    <label for="comment">Commentaire : </label>
-    <textarea id="comment" formControlName="commentaire" cols="25"></textarea>
-  </div>
-  <button type="submit" [disabled]="folderForm.invalid">Créer nouveau</button>
 </form>

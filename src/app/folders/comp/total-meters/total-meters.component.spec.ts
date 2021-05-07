@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditFolderComponent } from './edit-folder.component';
+import { TotalMetersComponent } from './total-meters.component';
 
-describe('EditFolderComponent', () => {
-  let component: EditFolderComponent;
-  let fixture: ComponentFixture<EditFolderComponent>;
+describe('TotalMetersComponent', () => {
+  let component: TotalMetersComponent;
+  let fixture: ComponentFixture<TotalMetersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditFolderComponent ]
+      declarations: [ TotalMetersComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditFolderComponent);
+    fixture = TestBed.createComponent(TotalMetersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EditFolderComponent } from './folders/comp/edit-folder/edit-folder.component';
 import { CreateFolderComponent } from './folders/comp/create-folder/create-folder.component';
 import { ListFoldersComponent } from './folders/comp/list-folders/list-folders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,26 +13,37 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
+import {FlexModule} from '@angular/flex-layout';
+import { TotalMetersComponent } from './folders/comp/total-meters/total-meters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditFolderComponent,
     CreateFolderComponent,
-    ListFoldersComponent
+    ListFoldersComponent,
+    TotalMetersComponent
   ],
-    imports: [
-      BrowserModule,
-      AppRoutingModule,
-      HttpClientModule,
-      ReactiveFormsModule,
-      BrowserAnimationsModule,
-      MatCardModule,
-      MatToolbarModule,
-      MatButtonModule,
-      MatDividerModule,
-      MatGridListModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatIconModule,
+    FlexModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

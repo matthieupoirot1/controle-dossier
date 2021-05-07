@@ -1,12 +1,28 @@
-<h3>Liste des dossiers</h3>
+<app-total-meters></app-total-meters>
 
-<mat-grid-list cols="4" rowHeight="2:1" gutterSize="3px">
-  <mat-grid-tile *ngFor="let folder of folders" class="card">
-    <mat-card>
-      <h2 class="textCenter">{{folder.name}}</h2>
-      <a *ngIf="!folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="invalid" mat-button>Compléter</a>
-      <a *ngIf="folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="valid" mat-button>Consulter</a>
-      <a (click)="onDelete(folder)" class="valid" mat-button>Supprimer</a>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div fxLayoutGap="15px" class="listContainer">
+  <div fxLayout="row wrap" fxLayoutAlign="flex-start center" fxLayoutGap="15px grid">
+      <div fxFlex="250px 0 0">
+        <mat-card class="card mat-elevation-z5">
+            <h2 class="textCenter">
+              <div>Nouveau</div>
+            </h2>
+            <div class="textCenter">
+              <a routerLink="/create" class="createLink" mat-raised-button color="accent">
+                <mat-icon>library_add</mat-icon>
+              </a>
+            </div>
+        </mat-card>
+      </div>
+
+    <div fxFlex="250px 0 0" *ngFor="let folder of folders" >
+      <mat-card class="card mat-elevation-z5" >
+        <h2 class="textCenter">{{folder.name}}</h2>
+        <a *ngIf="!folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="invalid" mat-button>Compléter</a>
+        <a *ngIf="folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="valid" mat-button>Consulter</a>
+        <a (click)="onDelete(folder)" class="valid" mat-button>Supprimer</a>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
