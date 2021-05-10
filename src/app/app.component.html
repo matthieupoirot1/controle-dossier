@@ -2,7 +2,7 @@
   <div class="imageContainer">
     <a [routerLink]="'/list'"><img class="image" src="/assets/logo_IBC.png"></a>
   </div>
-  <div fxLayout="row wrap" fxLayoutGap="2vw" fxLayoutAlign.xs="flex-start center" fxLayout.xs="column">
+  <div fxLayout="row wrap" fxLayoutGap="2vw" fxFlex fxLayoutAlign="center" fxLayoutAlign.xs="flex-start center" fxLayout.xs="column">
     <a [routerLink]="'/list'" mat-raised-button color="accent" class="linkText">Liste des dossiers</a>
     <a [routerLink]="'/create'" mat-raised-button color="accent" class="linkText">Créer un dossiers</a>
   </div>
