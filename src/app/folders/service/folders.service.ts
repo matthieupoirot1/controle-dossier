@@ -45,11 +45,18 @@ export class FoldersService {
   }
 
   getAllPerMonth(monthNumber: number): Observable<Folder[]> {
-    return this.getAll().lift(
+    return this.getAll().pipe(
       map((value: Folder[]) => {
-        return value.filter((folder) => {
+        console.log('before sort :');
+        console.log(value);
+        const sortedFolders = value.filter((folder) => {
+          console.log(monthNumber);
+          console.log(folder.mois);
           return folder.mois === monthNumber;
         });
+        console.log('after sort :');
+        console.log(sortedFolders);
+        return sortedFolders;
       }
     ));
   }

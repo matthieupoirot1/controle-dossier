@@ -32,9 +32,10 @@
     <div>
       <mat-form-field fxLayoutAlign="center" class="example-full-width" appearance="outline">
         <mat-label>Mois du dossier</mat-label>
-        <input type="number" matInput formControlName="date" placeholder="1">
+        <input type="number" matInput formControlName="mois" placeholder="1">
+        <span matSuffix>{{monthSuffix}}</span>
         <mat-error
-          *ngIf="folderForm.controls.date.invalid && (folderForm.controls.date.dirty || folderForm.controls.date.touched)">
+          *ngIf="folderForm.controls.mois.invalid && (folderForm.controls.mois.dirty || folderForm.controls.mois.touched)">
           Le mois doit être compris entre 1 et 12
         </mat-error>
       </mat-form-field>

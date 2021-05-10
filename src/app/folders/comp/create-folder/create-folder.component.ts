@@ -23,9 +23,11 @@ export class CreateFolderComponent implements OnInit {
     cadastre: new FormControl(false),
     controle: new FormControl(false),
     meters: new FormControl(0),
-    date: new FormControl(1, [Validators.max(12), Validators.min(1), Validators.required]),
+    mois: new FormControl(1, [Validators.max(12), Validators.min(1), Validators.required]),
     commentaire: new FormControl(''),
   });
+
+  public monthSuffix = '';
 
   constructor(private foldersService: FoldersService, private router: Router, private route: ActivatedRoute) { }
 
@@ -48,20 +50,32 @@ export class CreateFolderComponent implements OnInit {
           this.folderForm.controls.cadastre.setValue(folder.cadastre);
           this.folderForm.controls.controle.setValue(folder.controle);
           this.folderForm.controls.meters.setValue(folder.meters);
-          this.folderForm.controls.date.setValue(folder.date);
+          this.folderForm.controls.mois.setValue(folder.mois);
           this.folderForm.controls.commentaire.setValue(folder.commentaire);
         }
       );
-      // todo si id alors set tous les formControl au dossier attention il faut le recuperer avec le folderService
+    }else{
+      this.folderForm.controls.mois.setValue(new Date().getMonth() + 1);
     }
+
+    const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+    ];
+    this.monthSuffix = monthNames[this.folderForm.controls.mois.value - 1];
+    this.folderForm.controls.mois.valueChanges.subscribe((value) => {
+      this.monthSuffix = monthNames[value - 1];
+    });
   }
 
   onSubmit(): void{
     console.log(this.folderForm.value);
     const newOrOldFolder = Folder.createFromJSON(this.folderForm.value);
     newOrOldFolder.valid = newOrOldFolder.checkValidness();
-    console.log('hey! :');
+    console.log('Saving :');
     console.log(newOrOldFolder);
+    if (!this.folderModel || !newOrOldFolder.year){
+      newOrOldFolder.year = new Date().getFullYear();
+    }
     this.foldersService.create(newOrOldFolder).subscribe(() => {
       this.router.navigateByUrl('/list');
     });

@@ -1,28 +1,36 @@
-<app-total-meters></app-total-meters>
-
-<div fxLayoutGap="15px" class="listContainer">
-  <div fxLayout="row wrap" fxLayoutAlign="flex-start center" fxLayoutGap="15px grid">
-      <div fxFlex="250px 0 0">
-        <mat-card class="card mat-elevation-z5">
-            <h2 class="textCenter">
-              <div>Nouveau</div>
-            </h2>
-            <div class="textCenter">
-              <a routerLink="/create" class="createLink" mat-raised-button color="accent">
-                <mat-icon>library_add</mat-icon>
-              </a>
-            </div>
-        </mat-card>
-      </div>
-
-    <div fxFlex="250px 0 0" *ngFor="let folder of folders" >
-      <mat-card class="card mat-elevation-z5" >
-        <h2 class="textCenter">{{folder.name}}</h2>
-        <a *ngIf="!folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="invalid" mat-button>Compléter</a>
-        <a *ngIf="folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="valid" mat-button>Consulter</a>
-        <a (click)="onDelete(folder)" class="valid" mat-button>Supprimer</a>
+<div fxLayout="column" fxLayoutGap="15px" [style.margin-bottom]="'25px'">
+  <mat-toolbar color="primary">
+    <div fxLayout="row wrap" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+      <h2 class="monthName">{{monthName}}</h2>
+      <app-total-meters [nbMonth]="monthNumber"></app-total-meters>
+    </div>
+  </mat-toolbar>
+  <mat-divider></mat-divider>
+  <div fxLayoutGap="15px" class="listContainer">
+    <div fxFlex="250px 0 0">
+      <mat-card class="card mat-elevation-z5">
+        <h2 class="textCenter">
+          Nouveau
+        </h2>
+        <div class="textCenter">
+          <a routerLink="/create" class="createLink" mat-raised-button color="accent">
+            <mat-icon>library_add</mat-icon>
+          </a>
+        </div>
       </mat-card>
     </div>
-  </div>
 
+    <div fxLayout="row wrap" fxLayoutAlign="flex-start center" fxLayoutGap="15px grid">
+      <div fxFlex="250px 0 0" *ngFor="let folder of folders">
+        <mat-card class="card mat-elevation-z5">
+          <h2 class="textCenter">{{folder.name}}</h2>
+          <a *ngIf="!folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="invalid"
+             mat-button>Compléter</a>
+          <a *ngIf="folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="valid" mat-button>Consulter</a>
+          <a (click)="onDelete(folder)" class="valid" mat-button>Supprimer</a>
+        </mat-card>
+      </div>
+    </div>
+
+  </div>
 </div>

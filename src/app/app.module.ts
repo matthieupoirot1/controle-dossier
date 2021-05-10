@@ -19,13 +19,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {FlexModule} from '@angular/flex-layout';
 import { TotalMetersComponent } from './folders/comp/total-meters/total-meters.component';
+import { DisplayFoldersComponent } from './folders/comp/display-folders/display-folders.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateFolderComponent,
     ListFoldersComponent,
-    TotalMetersComponent
+    TotalMetersComponent,
+    DisplayFoldersComponent
   ],
   imports: [
     BrowserModule,
