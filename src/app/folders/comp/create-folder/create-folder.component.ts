@@ -25,6 +25,7 @@ export class CreateFolderComponent implements OnInit {
     meters: new FormControl(0),
     mois: new FormControl(1, [Validators.max(12), Validators.min(1), Validators.required]),
     commentaire: new FormControl(''),
+    refuse: new FormControl(false),
   });
 
   public monthSuffix = '';
@@ -52,6 +53,7 @@ export class CreateFolderComponent implements OnInit {
           this.folderForm.controls.meters.setValue(folder.meters);
           this.folderForm.controls.mois.setValue(folder.mois);
           this.folderForm.controls.commentaire.setValue(folder.commentaire);
+          this.folderForm.controls.refuse.setValue(folder.refuse);
         }
       );
     }else{

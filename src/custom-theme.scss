@@ -14,6 +14,7 @@
 // hue. Available color palettes: https://material.io/design/color/
 $controle-dossiers-primary: mat-palette($mat-blue, 700, 300, 900);
 $controle-dossiers-accent: mat-palette($mat-cyan);
+$controle-dossiers-valid: mat-palette($mat-green);
 
 // The warn palette is optional (defaults to red).
 $controle-dossiers-warn: mat-palette($mat-red);
@@ -25,6 +26,7 @@ $controle-dossiers-theme: mat-light-theme((
     primary: $controle-dossiers-primary,
     accent: $controle-dossiers-accent,
     warn: $controle-dossiers-warn,
+    valid: $controle-dossiers-valid
   )
 ));
 

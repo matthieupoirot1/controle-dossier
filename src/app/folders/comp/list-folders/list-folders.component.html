@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutGap="15px" [style.margin-bottom]="'25px'">
+<div fxLayout="column" fxLayoutGap="15px" [style.margin-bottom]="'50px'">
   <mat-toolbar color="accent" class="mat-elevation-z4 toolbars">
     <div fxLayout="row wrap" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
       <h2 class="monthName">{{monthName}}</h2>
@@ -12,7 +12,7 @@
         <h2 class="textCenter">
           Nouveau
         </h2>
-        <div class="textCenter">
+        <div class="textCenter" fxLayout="row" fxLayoutAlign="center">
           <a routerLink="/create" class="createLink" mat-raised-button color="accent">
             <mat-icon>library_add</mat-icon>
           </a>
@@ -21,14 +21,19 @@
     </div>
 
     <div fxLayout="row wrap" fxLayoutAlign="flex-start center" fxLayoutGap="15px grid">
-      <div fxFlex="250px 0 0" *ngFor="let folder of folders">
-        <mat-card class="card mat-elevation-z5">
-          <h2 class="textCenter">{{folder.name}}</h2>
-          <a *ngIf="!folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="invalid"
-             mat-button>Compléter</a>
-          <a *ngIf="folder.valid" href="{{'/edit/' + folder.getFormatedName()}}" class="valid" mat-button>Consulter</a>
-          <a (click)="onDelete(folder)" class="valid" mat-button>Supprimer</a>
-        </mat-card>
+      <div fxFlex="250px 0 0" *ngFor="let folder of invalidFolders">
+        <app-folder-card [folder]="folder" [reloadFolders]="reloadFolders"></app-folder-card>
+      </div>
+
+      <app-vertical-separator *ngIf="validFolders.length>0 && invalidFolders.length>0"></app-vertical-separator>
+
+      <div fxFlex="250px 0 0" *ngFor="let folder of validFolders">
+        <app-folder-card [folder]="folder" [reloadFolders]="reloadFolders"></app-folder-card>
+      </div>
+
+      <app-vertical-separator *ngIf="refusedFolders.length>0 && (invalidFolders.length>0 || validFolders.length>0)"></app-vertical-separator>
+      <div fxFlex="250px 0 0" *ngFor="let folder of refusedFolders">
+        <app-folder-card [folder]="folder" [reloadFolders]="reloadFolders"></app-folder-card>
       </div>
     </div>
 

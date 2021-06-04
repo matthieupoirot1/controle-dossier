@@ -14,6 +14,7 @@ export class Folder {
   public mois = 1;
   public commentaire = '';
   public year: number;
+  public refuse = false;
 
   constructor(
     name: string,
@@ -30,7 +31,8 @@ export class Folder {
     valid: false,
     mois: number,
     commentaire: string,
-    year: number) {
+    year: number,
+    refuse: boolean) {
     this.name = name;
     this.photos = photos;
     this.vt = vt;
@@ -46,6 +48,7 @@ export class Folder {
     this.commentaire = commentaire;
     this.mois = mois;
     this.year = year;
+    this.refuse = refuse;
   }
 
   static createFromJSON(JSONobject: any): Folder{
@@ -65,6 +68,7 @@ export class Folder {
       JSONobject?.mois,
       JSONobject?.commentaire,
       JSONobject?.year,
+      JSONobject.refuse
     );
   }
 
@@ -84,7 +88,8 @@ export class Folder {
       valid: this.valid,
       mois: this.mois,
       commentaire: this.commentaire,
-      year: this.year
+      year: this.year,
+      refuse: this.refuse
     });
   }
 

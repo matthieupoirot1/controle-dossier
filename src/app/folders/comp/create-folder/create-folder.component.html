@@ -48,6 +48,9 @@
         <mat-checkbox id="vt" formControlName="vt">Visite Technique</mat-checkbox>
       </div>
       <div class="checkboxDiv">
+        <mat-checkbox id="cadastre" formControlName="cadastre">Cadastre, mesures et infos</mat-checkbox>
+      </div>
+      <div class="checkboxDiv">
         <mat-checkbox id="imposition" formControlName="imposition">Imposition</mat-checkbox>
       </div>
       <div class="checkboxDiv">
@@ -63,16 +66,16 @@
         <mat-checkbox id="dateBatigest" formControlName="dateBatigest">Date signature Batigest</mat-checkbox>
       </div>
       <div class="checkboxDiv">
-        <mat-checkbox id="cadastre" formControlName="cadastre">Mesures cadastre et infos</mat-checkbox>
+        <mat-checkbox id="controle" formControlName="controle">Mise en contrôle</mat-checkbox>
       </div>
       <div class="checkboxDiv">
-        <mat-checkbox id="controle" formControlName="controle">Mise en contrôle</mat-checkbox>
+        <mat-checkbox id="refuse" formControlName="refuse">Refusé</mat-checkbox>
       </div>
     </div>
     <div>
       <mat-form-field fxLayoutAlign="center" class="example-full-width" appearance="outline">
         <mat-label>Commentaire</mat-label>
-        <textarea matInput formControlName="commentaire"></textarea>
+        <textarea matInput formControlName="commentaire" rows="5"></textarea>
       </mat-form-field>
     </div>
     <div fxLayout="row" fxLayoutAlign="center">

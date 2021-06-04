@@ -20,6 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {FlexModule} from '@angular/flex-layout';
 import { TotalMetersComponent } from './folders/comp/total-meters/total-meters.component';
 import { DisplayFoldersComponent } from './folders/comp/display-folders/display-folders.component';
+import { FolderCardComponent } from './folders/comp/folder-card/folder-card.component';
+import { VerticalSeparatorComponent } from './cosmetics/vertical-separator/vertical-separator.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { DisplayFoldersComponent } from './folders/comp/display-folders/display-
     CreateFolderComponent,
     ListFoldersComponent,
     TotalMetersComponent,
-    DisplayFoldersComponent
+    DisplayFoldersComponent,
+    FolderCardComponent,
+    VerticalSeparatorComponent
   ],
   imports: [
     BrowserModule,

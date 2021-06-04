@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ApiService} from '../../shared/api/api.service';
 import {Observable} from 'rxjs';
 import {Folder} from '../model/folder.model';
@@ -12,10 +12,10 @@ export class FoldersService {
   constructor(private api: ApiService) {}
 
   getAll(): Observable<Folder[]>{
+    console.log('getting every folders');
     return this.api.getData('folders.json').pipe(
       map(
       (data) => {
-        console.log(data);
         if (!data) { data = {}; }
         // Data is an object composed of folder object, so getting only the values
         return Object.values(data).map((JSONfolder) => {
@@ -45,23 +45,18 @@ export class FoldersService {
   }
 
   getAllPerMonth(monthNumber: number): Observable<Folder[]> {
+    console.log('For Month : ' + monthNumber);
     return this.getAll().pipe(
       map((value: Folder[]) => {
-        console.log('before sort :');
-        console.log(value);
-        const sortedFolders = value.filter((folder) => {
-          console.log(monthNumber);
-          console.log(folder.mois);
+        return value.filter((folder) => {
           return folder.mois === monthNumber;
         });
-        console.log('after sort :');
-        console.log(sortedFolders);
-        return sortedFolders;
       }
     ));
   }
 
   getNbMetersPerMonth(monthNumber: number, valid = true): Observable<number>{
+    console.log('To get nbMetersPerMonth :');
     return this.getAllPerMonth(monthNumber).pipe(
       map((folders: Folder[]) => {
         folders = folders.filter(folder => folder.valid === valid && folder.mois === monthNumber);
@@ -80,11 +75,19 @@ export class FoldersService {
         folders = folders.filter(folder => folder.valid === valid);
         let nbMeters = 0;
         for (const folder of folders) {
-          console.log(folder.meters);
           nbMeters += folder.meters;
         }
         return nbMeters;
       })
     );
   }
+  // TODO backup method
+  // backupToJSON(): void{
+  //   const writeStream = fs.createWriteStream('/assets/');
+  //   this.getAll().subscribe((folders) => {
+  //     folders.forEach((folder) => {
+  //       const folderJSON = folder.toJSON();
+  //     });
+  //   });
+  // }
 }
